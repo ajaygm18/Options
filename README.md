@@ -2,6 +2,27 @@
 
 An enterprise-grade options trading system designed as a regulated, safety-critical distributed system with industrial-strength risk controls and observability.
 
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/ajaygm18/Options.git
+cd Options
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the demo
+python scripts/demo.py
+```
+
+**Expected Output:**
+- ✅ Option pricing: Call option priced at ~$17
+- ✅ Portfolio Greeks calculated (Delta, Gamma, Theta, Vega)
+- ✅ Volatility surface built and interpolated
+- ✅ Stress testing: 8 scenarios executed
+- ✅ VaR/CVaR calculated using Monte Carlo (1000 simulations)
+
 ## Overview
 
 This system implements a complete options trading platform following the specifications in `Ins.txt`, with emphasis on:
