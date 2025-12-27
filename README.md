@@ -1,4 +1,23 @@
-Alright—if the mission is “build an enterprise-grade options trading system that can run unattended, survive bad markets, and never blow up,” I’d design it like a regulated, safety-critical distributed system first… and a “strategy machine” second.
+# Options Trading System Scaffold
+
+This repository now includes a minimal, risk-first Python scaffold that mirrors the architecture described below. It is
+intended as a starting point for building an event-driven options trading platform, not a promise of profitability or
+an invitation to trade without professional oversight.
+
+## Quick start
+
+```bash
+python main.py
+```
+
+The example run wires a mean-reversion strategy into a basic event bus, risk gate, and order manager. Use it as a
+reference for where to plug in market data adapters, portfolio optimization, and real broker connectivity.
+
+## Architecture background
+
+Alright—if the mission is “build an enterprise-grade options trading system that can run unattended, survive bad
+markets, and never blow up,” I’d design it like a regulated, safety-critical distributed system first… and a “strategy
+machine” second.
 
 Also: nobody can honestly promise “highly profitable” in all regimes. What you can build is a platform that (1) discovers/validates edges rigorously, (2) executes with minimal leakage/slippage, and (3) has industrial-strength risk controls and observability so it doesn’t die when reality deviates from your model.
 

@@ -1,0 +1,14 @@
+[project]
+name = "options"
+version = "0.1.0"
+description = "Event-driven options trading system scaffold with risk-first controls."
+requires-python = ">=3.11"
+readme = "README.md"
+authors = [{ name = "Options Team" }]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP"]
