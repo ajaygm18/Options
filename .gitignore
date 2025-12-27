@@ -137,7 +137,7 @@ Thumbs.db
 *.db
 *.sqlite
 logs/
-data/
+/data/
 backtest_results/
 .secrets/
 tmp/
