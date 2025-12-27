@@ -1,0 +1,73 @@
+# Base Configuration for Options Trading System
+# This configuration is extended by environment-specific configs
+
+system:
+  name: "options-trading-system"
+  version: "0.1.0"
+  timezone: "America/New_York"
+
+logging:
+  level: "INFO"
+  format: "json"
+  output: "logs/system.log"
+  audit_log: "logs/audit.log"
+
+market_data:
+  update_interval_ms: 1000
+  stale_threshold_ms: 5000
+  cache_size: 10000
+
+risk:
+  limits:
+    max_daily_loss: 10000
+    max_position_size: 100
+    max_notional_per_underlying: 100000
+    max_portfolio_notional: 500000
+    max_margin_utilization: 0.7
+    max_delta_per_underlying: 500
+    max_gamma_per_underlying: 100
+    max_vega_per_underlying: 1000
+    max_theta_per_day: -500
+  
+  circuit_breakers:
+    enabled: true
+    drawdown_threshold: 0.05  # 5% drawdown triggers circuit breaker
+    data_staleness_threshold_ms: 10000
+    broker_reject_rate_threshold: 0.3
+    spread_multiplier_threshold: 3.0
+    volatility_spike_threshold: 2.0
+
+execution:
+  default_timeout_ms: 5000
+  max_retries: 3
+  rate_limit_per_second: 10
+  order_placement_delay_ms: 100
+
+portfolio:
+  optimization:
+    risk_aversion: 1.0
+    cost_multiplier: 0.5
+    max_turnover: 0.3
+    rebalance_threshold: 0.05
+
+backtesting:
+  initial_capital: 100000
+  commission_per_contract: 0.65
+  slippage_model: "spread_based"
+  fill_probability: 0.8
+
+analytics:
+  volatility_surface:
+    min_liquidity_score: 0.3
+    arbitrage_check: true
+    smoothing_method: "cubic_spline"
+  
+  greeks:
+    calculation_method: "black_scholes"
+    risk_free_rate: 0.05
+    dividend_yield: 0.0
+
+monitoring:
+  metrics_collection_interval_s: 10
+  alert_cooldown_s: 300
+  health_check_interval_s: 30

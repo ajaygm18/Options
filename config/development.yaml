@@ -1,0 +1,28 @@
+# Development Environment Configuration
+# Extends base.yaml with development-specific settings
+
+extends: "base.yaml"
+
+logging:
+  level: "DEBUG"
+  output: "stdout"
+
+risk:
+  limits:
+    max_daily_loss: 1000
+    max_position_size: 10
+    max_notional_per_underlying: 10000
+    max_portfolio_notional: 50000
+  
+  circuit_breakers:
+    enabled: true
+    drawdown_threshold: 0.10  # More lenient in dev
+
+execution:
+  rate_limit_per_second: 5
+
+backtesting:
+  initial_capital: 10000
+
+monitoring:
+  metrics_collection_interval_s: 5
