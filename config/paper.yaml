@@ -1,0 +1,27 @@
+# Paper Trading Environment Configuration
+# Extends base.yaml with paper trading settings
+
+extends: "base.yaml"
+
+logging:
+  level: "INFO"
+  output: "logs/paper_trading.log"
+
+execution:
+  broker_type: "paper"
+  simulate_fills: true
+  fill_delay_ms: 100
+
+risk:
+  limits:
+    max_daily_loss: 5000
+    max_position_size: 50
+    max_notional_per_underlying: 50000
+    max_portfolio_notional: 250000
+
+backtesting:
+  initial_capital: 50000
+  slippage_model: "realistic"
+
+monitoring:
+  alert_to_console: true

@@ -1,0 +1,34 @@
+# Production Environment Configuration
+# Extends base.yaml with production settings
+
+extends: "base.yaml"
+
+logging:
+  level: "WARNING"
+  output: "logs/production.log"
+  audit_log: "logs/production_audit.log"
+
+risk:
+  limits:
+    max_daily_loss: 10000
+    max_position_size: 100
+    max_notional_per_underlying: 100000
+    max_portfolio_notional: 500000
+    max_margin_utilization: 0.6  # More conservative
+  
+  circuit_breakers:
+    enabled: true
+    drawdown_threshold: 0.03  # 3% - stricter in production
+    data_staleness_threshold_ms: 5000
+    broker_reject_rate_threshold: 0.2
+    spread_multiplier_threshold: 2.5
+
+execution:
+  broker_type: "live"
+  max_retries: 5
+  rate_limit_per_second: 20
+
+monitoring:
+  metrics_collection_interval_s: 10
+  alert_to_pagerduty: true
+  health_check_interval_s: 15

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  options-trading-system:
+    build: .
+    container_name: options-trading-system
+    volumes:
+      - ./src:/app/src
+      - ./config:/app/config
+      - ./tests:/app/tests
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - ENVIRONMENT=development
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8000:8000"
+    command: python scripts/run_paper_trading.py
+
+  # Future: Add Redis for state management
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+
+  # Future: Add TimescaleDB for time-series data
+  # timescaledb:
+  #   image: timescale/timescaledb:latest-pg15
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #   ports:
+  #     - "5432:5432"
